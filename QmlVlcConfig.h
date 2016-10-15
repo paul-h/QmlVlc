@@ -44,6 +44,7 @@ public:
     void enableDebug( bool enable );
     void enableNoVideoTitleShow( bool enable );
     void enableHardwareAcceleration( bool enable );
+    void enableLoopPlayback( bool enable );
 
     void setTrustedEnvironment( bool trusted );
     bool trustedEnvironment() const;
@@ -69,6 +70,7 @@ private:
     bool _noVideoTitleShow;
     bool _hardwareAcceleration;
     bool _trustedEnvironment;
+    bool _loopPlayback;
     unsigned _libvlcCounter;
     libvlc_instance_t* _libvlc;
 };

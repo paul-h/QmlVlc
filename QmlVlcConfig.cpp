@@ -82,6 +82,11 @@ void QmlVlcConfig::enableHardwareAcceleration( bool enable )
     _hardwareAcceleration = enable;
 }
 
+void QmlVlcConfig::enableLoopPlayback( bool enable )
+{
+    _loopPlayback = enable;
+}
+
 void QmlVlcConfig::setTrustedEnvironment( bool trusted )
 {
     _trustedEnvironment = trusted;
@@ -178,6 +183,9 @@ libvlc_instance_t* QmlVlcConfig::createLibvlcInstance()
         opts.push_back( "--ffmpeg-hw" );
         opts.push_back( "--avcodec-hw=any" );
     }
+
+    if( _loopPlayback )
+        opts.push_back( "--input-repeat=-1" );
 
     _libvlc = libvlc_new( opts.size(), opts.data() );
     _libvlcCounter = 1;
